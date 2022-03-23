@@ -1,6 +1,9 @@
 run:
 	bin/rails s
 
+lock:
+	bundle lock --add-platform x86_64-linux
+
 install:
 	bundle install
 
@@ -12,14 +15,25 @@ lint:
 
 check: test lint
 
-docker-run:
-	docker-compose up
-
 database:
 	docker-compose up db
 
-build:
+database-load:
+	bin/rails db:schema:load
+
+databse-setup:
+	bin/rails db:setup
+
+migrate:
+	bin/rails db:migrate
+
+setup: lock install databse-setup
+
+docker-build:
 	docker-compose build
+
+docker-run:
+	docker-compose up
 
 docker-create:
 	docker-compose run web bundle exec rails db:create
@@ -27,7 +41,7 @@ docker-create:
 docker-migrate:
 	docker-compose run web bundle exec rails db:migrate
 
-annotate:
+docker-annotate:
 	docker-compose run web annotate
 
-setup: build docker-create docker-migrate
+docker-setup: build docker-create docker-migrate
