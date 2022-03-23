@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCustomTimers < ActiveRecord::Migration[7.0]
   def change
     create_table :custom_timers do |t|

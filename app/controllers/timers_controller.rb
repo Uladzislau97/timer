@@ -1,7 +1,8 @@
-class TimersController < ApplicationController
-  def create
-  end
+# frozen_string_literal: true
 
-  def show
-  end
+# Controller for setting and geting info about timers
+class TimersController < ApplicationController
+  def create; end
+
+  def show; end
 end
