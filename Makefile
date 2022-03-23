@@ -4,7 +4,7 @@ run:
 lock:
 	bundle lock --add-platform x86_64-linux
 
-install:
+install: lock
 	bundle install
 
 test:
@@ -27,7 +27,7 @@ databse-setup:
 migrate:
 	bin/rails db:migrate
 
-setup: lock install databse-setup
+setup: install databse-setup
 
 docker-build:
 	docker-compose build
