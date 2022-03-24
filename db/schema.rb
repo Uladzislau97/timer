@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_24_104757) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_24_122709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "custom_timers", force: :cascade do |t|
-    t.datetime "value", null: false
     t.string "url", null: false
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["value"], name: "index_custom_timers_on_value"
+    t.integer "seconds", null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
