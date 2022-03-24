@@ -21,13 +21,13 @@ database:
 database-load:
 	bin/rails db:schema:load
 
-databse-setup:
+database-setup:
 	bin/rails db:setup
 
 migrate:
 	bin/rails db:migrate
 
-setup: install databse-setup
+setup: install database-setup
 
 docker-build:
 	docker-compose build

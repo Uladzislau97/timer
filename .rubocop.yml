@@ -1,6 +1,7 @@
 require: rubocop-rails
 
-Style/Documentation:
+AllCops:
   Exclude:
-    - 'db/migrate/**'
-    - 'config/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
