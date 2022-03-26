@@ -14,4 +14,8 @@
 class CustomTimer < ApplicationRecord
   validates :seconds, numericality: { greater_than_or_equal_to: 0 }
   validates :url, presence: true
+
+  def call_url
+    HttpService.post(URI.join(url, id.to_s))
+  end
 end

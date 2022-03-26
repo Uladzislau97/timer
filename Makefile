@@ -29,6 +29,9 @@ migrate:
 
 setup: install database-setup
 
+jobs:
+	bundle exec rake jobs:work
+
 docker-build:
 	docker-compose build
 

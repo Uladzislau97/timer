@@ -13,7 +13,12 @@ class TimerCreator
   end
 
   def call
-    timer = CustomTimer.new(seconds: @seconds, url: @url)
-    timer.save!
+    ActiveRecord::Base.transaction do
+      timer = CustomTimer.new(seconds: @seconds, url: @url)
+      timer.save!
+
+      timer.delay(run_at: @seconds.seconds.from_now).call_url
+      timer.id
+    end
   end
 end
