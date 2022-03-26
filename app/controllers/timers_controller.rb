@@ -16,7 +16,14 @@ class TimersController < ApplicationController
     render plain: 'Internal server error', status: :internal_server_error
   end
 
-  def show; end
+  def show
+    timer = CustomTimer.find(params[:id])
+    render json: { id: timer.id, time_left: TimeLeftCalculator.call(timer) }
+  rescue ActiveRecord::RecordNotFound
+    render plain: "Not found timer #{params[:id]}", status: :bad_request
+  rescue StandardError
+    render plain: 'Internal server error', status: :internal_server_error
+  end
 
   private
 
