@@ -21,13 +21,10 @@ database:
 database-load:
 	bin/rails db:schema:load
 
-database-setup:
-	bin/rails db:setup
-
 migrate:
 	bin/rails db:migrate
 
-setup: install database-setup
+setup: install database-load migrate
 
 jobs:
 	bundle exec rake jobs:work
