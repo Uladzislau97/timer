@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.7'
+gem 'dry-validation', '~> 1.8'
 gem 'pg', '~> 1.3', '>= 1.3.4'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2'
