@@ -10,7 +10,7 @@ class TimersController < ApplicationController
       return
     end
 
-    id = TimerCreator.new(timer_params).call
+    id = TimerCreator.new(validation_result.to_h).call
     render json: { id: id }, status: :ok
   rescue StandardError
     render plain: 'Internal server error', status: :internal_server_error

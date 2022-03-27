@@ -8,12 +8,19 @@ RSpec.describe TimersController, type: :controller do
         hours: 1,
         minutes: 5,
         seconds: 20,
-        url: 'https://requested.con'
+        url: 'https://requested.com'
       }
     end
 
     context 'valid params are sent' do
       it 'return code 200 with created timer id' do
+        expect(HttpService).to receive(:post)
+
+        post :create, params: { timer: params }
+        timer = CustomTimer.last
+
+        expect(response.code).to eq('200')
+        expect(JSON.parse(response.body)).to eq({ 'id' => timer.id })
       end
     end
 
