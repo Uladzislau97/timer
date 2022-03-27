@@ -8,3 +8,7 @@
 - Start background jobs by running `make jobs`
 - Go to next terminal tab and use `make run` to start a server
 - Use API:)
+
+### Test instructions
+- Run databse with `make database`
+- Run test and linter with `make check`
