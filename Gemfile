@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
   gem 'rubocop-rails', '~> 2.14', '>= 2.14.2'
   gem 'rubocop-rspec', '~> 2.9'
+  gem 'timecop', '~> 0.9.5'
 end
 
 group :development do

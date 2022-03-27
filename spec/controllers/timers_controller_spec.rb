@@ -67,11 +67,31 @@ RSpec.describe TimersController, type: :controller do
     context 'timer with id exists' do
       context 'timer is working' do
         it "returns timer's id and time left" do
+          Timecop.freeze(timer.created_at + 3600.seconds)
+          get :show, params: { id: timer.id }
+
+          expect(response.code).to eq('200')
+          expect(JSON.parse(response.body)).to eq (
+            {
+              'id' => timer.id,
+              'time_left' => 330
+            }
+          )
         end
       end
 
       context "timer's work is finished" do
         it "returns timer's id and time left = 0" do
+          Timecop.freeze(timer.created_at + 7200.seconds)
+          get :show, params: { id: timer.id }
+
+          expect(response.code).to eq('200')
+          expect(JSON.parse(response.body)).to eq (
+            {
+              'id' => timer.id,
+              'time_left' => 0
+            }
+          )
         end
       end
     end
